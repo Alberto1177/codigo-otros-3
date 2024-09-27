@@ -11,26 +11,30 @@ const productos = [
 const li = document.getElementById("lista-de-productos")
 //estaba mal escrito input
 const $i = document.querySelector('input');
-
-for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
-
-  var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
+//se declara la funcion para que pueda ser utilizada
+function displayProductos(productos) {
+  for (let i = 0; i < productos.length; i++) {
+    var d = document.createElement("div")
+    d.classList.add("producto")
   
-  var imagen = document.createElement("img");
-  imagen.setAttribute('src', productos[i].img);
-
-  d.appendChild(ti)
-  d.appendChild(imagen)
-
-  li.appendChild(d)
+    var ti = document.createElement("p")
+    ti.classList.add("titulo")
+    ti.textContent = productos[i].nombre
+    
+    var imagen = document.createElement("img");
+    imagen.setAttribute('src', productos[i].img);
+  
+    d.appendChild(ti)
+    d.appendChild(imagen)
+  
+    li.appendChild(d)
+  }
 }
 
 displayProductos(productos)
-const botonDeFiltro = document.querySelector("button");
+//se cambio el selector y se le agrego id al boton en el html
+const botonDeFiltro = document.getElementById("filtro-btn");
+
 
 botonDeFiltro.onclick = function() {
   while (li.firstChild) {
